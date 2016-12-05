@@ -27,7 +27,7 @@ app.set('port',3000);
 
 app.use(express.static('public'));
 
-
+/*
 app.get('/things', function(req,res) {
   var result = [] ;
   db.each("SELECT rowid AS id, thing FROM Stuff", function(err, row) {
@@ -38,6 +38,7 @@ app.get('/things', function(req,res) {
     res.json(result);
   });
 })
+*/
 
 io.on('connection', function(socket) {
     console.log("connection");

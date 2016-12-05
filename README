@@ -1,0 +1,8 @@
+Minimal Proof of concept Nodejs SQLite Socket.io Vuejs
+
+Use nodejs to display database value.
+
+* Vuejs is use as data binding in HTML
+* Socket.io is use to communicate data with websocket
+* SQlite3 is the simplest database to be use
+* Nodejs is use as web server
