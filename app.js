@@ -2,9 +2,9 @@ var file = "test.db"
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database(file);
 
-//db.run("CREATE TABLE Stuff (thing TEXT)");
+/* //Database creation
+db.run("CREATE TABLE Stuff (thing TEXT)");
 
-/*
 //Insert random data
 var stmt = db.prepare("INSERT INTO Stuff VALUES (?)");
 var rnd;
@@ -13,9 +13,6 @@ for (var i = 0; i < 10; i++) {
     stmt.run("Thing #" + rnd);
 }
 stmt.finalize();
-*/
-
-/*
   db.each("SELECT rowid AS id, thing FROM Stuff", function(err, row) {
     console.log(row.id + ": " + row.thing);
   });
@@ -42,12 +39,15 @@ app.get('/things', function(req,res) {
   });
 })
 
-/*app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})*/
 io.on('connection', function(socket) {
-    socket.on('thinks',function(data) {
-        io.emit('thinks',[]);
+    console.log("connection");
+
+    var result = [] ;
+    db.each("SELECT rowid AS id, thing FROM Stuff", function(err, row) {
+        result.push( row );
+    }, function(err, row) {
+        console.log("finish");
+        io.emit('things',result);
     });
 });
 

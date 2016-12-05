@@ -18,16 +18,13 @@ var vm = new Vue({
   el: '#app',
   data: {
     message: "Hello Vue!",
-    things: [
-        { 'id' : 0, 'thing' : "azer" },
-        { 'id' : 1, 'thing' : "toto" },
-    ],
+    things: [],
   },
-  /*created: function() {
+  created: function() {
     socket.on('things', function(data) {
             this.things = data;
     }.bind(this));
-  }*/
+  }
 });
 </script>
 </body>
